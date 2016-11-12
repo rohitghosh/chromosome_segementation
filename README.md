@@ -17,7 +17,7 @@ There were 2 methods of training attempted
 - Treating Class 1 & Class 2 as same i.e. Class 1 and Class 3 as Class 2 (param combine_label = False in segmentation.py)Assumption being the non-overlapping parts inherently aren't different in each chromosomes
 
 The training log with combined_label looks like this
-![image_train](/images/combined_label_train)
+![image_train](/images/combined_label_train.png)
 
 
 ### Results
