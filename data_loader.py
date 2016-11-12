@@ -12,9 +12,12 @@ h5f.close()
 
 train_valid_split = int(0.8*pairs.shape[0])
 
-weight_list = [0.1, 1, 1, 10]
 
-def weights_assign(train):
+def weights_assign(train, combine_label):
+    if combine_label:
+        weight_list = [0.1, 1, 10]
+    else:
+        weight_list = [0.1, 1, 1, 10]
     if train == 0:
         return weight_list[0]
     elif train == 1:
@@ -23,8 +26,6 @@ def weights_assign(train):
         return weight_list[2]
     elif train == 3:
         return weight_list[3]
-    else:
-        print ('wrong_going')
 
 def labels_combine(train):
     new_train = train
@@ -32,9 +33,9 @@ def labels_combine(train):
     new_train[train==3] = 2
     return new_train
 
-def weights_matrix_gen(train,weight_list):
+def weights_matrix_gen(train,combine_label):
     func = np.vectorize(weights_assign, otypes=[np.float64])
-    weights = func(train)
+    weights = func(train,combine_label)
     return weights
 
 
@@ -48,7 +49,7 @@ def train_data_loader(batch_size = 10, combine_label = False):
             Y_train = labels_combine(Y_train)
         if np.amax(Y_train) > 3:
             continue
-        weights = weights_matrix_gen(Y_train,weight_list)
+        weights = weights_matrix_gen(Y_train,combine_label)
         X_train = X_train.reshape((batch_size,1,X_train.shape[1],X_train.shape[2]))
         Y_train = Y_train.reshape((batch_size,1,Y_train.shape[1],Y_train.shape[2]))
         yield X_train, Y_train, weights

@@ -10,7 +10,7 @@ The repo uses [U-Net](https://arxiv.org/abs/1505.04597), state-of-the art segmen
 
 The data consists of 4 classes, where class 4 is the common region between 2 overlapping chromosomes. The classes 1 & 2 , are non-overlapping part of each of the chromosomes. Class 0 is the background
 
-The performance of the net was observed using mean_dic_score. It was computed as 'dice_score = 2*I/(GT + PL)' where I is the sum of the number of pixels predicted correctly except background, GT is the number of pixels which belong to ground-truth except background and PL is the number of pixels in predicted image except background.
+The performance of the net was observed using mean_dice_score. It was computed as `dice_score = 2*I/(GT + PL)` where I is the sum of the number of pixels predicted correctly except background, GT is the number of pixels which belong to ground-truth except background and PL is the number of pixels in predicted image except background.
 
 There were 2 methods of training attempted
 - Treating all the classes independently (param combine_label = True in segmentation.py)
