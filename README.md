@@ -16,11 +16,11 @@ There were 2 methods of training attempted
 - Treating all the classes independently (param combine_label = True in segmentation.py)
 - Treating Class 1 & Class 2 as same i.e. Class 1 and Class 3 as Class 2 (param combine_label = False in segmentation.py)Assumption being the non-overlapping parts inherently aren't different in each chromosomes. Then we can apply conventional CV methods like watershed algorithm to distinguish between the non-overlapping blobs
 
-The training log with combined_label looks like this
+<!-- The training log with combined_label looks like this
 ![image_train](/images/combined_label_train.png)
 
 The training log without combined_label, i.e. as it is looks like this
-![image_train](/images/non_combined_label_train.png)
+![image_train](/images/non_combined_label_train.png) -->
 
 ##TODO
 - Build the Watershed algorithm post-processing part to the pipleline in case of combined_label training
